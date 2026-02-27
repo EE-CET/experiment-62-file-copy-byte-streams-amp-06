@@ -4,28 +4,29 @@ import java.io.IOException;
 
 public class FileCopy {
     public static void main(String[] args) {
+
         String sourceFile = "source.txt";
         String destFile = "destination.txt";
 
-        // Part 1: Copy from source to destination using Byte Streams
+        // Part 1: Copy from source.txt to destination.txt
         try (FileInputStream fis = new FileInputStream(sourceFile);
              FileOutputStream fos = new FileOutputStream(destFile)) {
 
             int byteData;
 
-            // Read until end of file (-1)
+            // Read each byte and write to destination
             while ((byteData = fis.read()) != -1) {
                 fos.write(byteData);
             }
 
         } catch (IOException e) {
             System.out.println("Error during file copy: " + e.getMessage());
-            return; // Exit if copy fails
+            return; // Stop execution if copy fails
         }
 
         System.out.println("File Copied");
 
-        // Part 2: Read and display the contents of destination file
+        // Part 2: Read and display contents of destination.txt
         try (FileInputStream fis = new FileInputStream(destFile)) {
 
             int byteData;
@@ -36,9 +37,6 @@ public class FileCopy {
 
         } catch (IOException e) {
             System.out.println("Error reading destination file: " + e.getMessage());
-        }
-    }
-}n("Error reading destination file: " + e.getMessage());
         }
     }
 }
